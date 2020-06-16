@@ -1,0 +1,90 @@
+server:
+  port: 8088
+
+---
+
+spring:
+  profiles: default
+  cloud:
+    gateway:
+      routes:
+        - id: reservation
+          uri: http://localhost:8081
+          predicates:
+            - Path=/reservations/** 
+        - id: inspection
+          uri: http://localhost:8082
+          predicates:
+            - Path=/kits/**/inspections/** 
+        - id: diagnosis
+          uri: http://localhost:8083
+          predicates:
+            - Path=/diagnoses/** 
+        - id: delivery
+          uri: http://localhost:8084
+          predicates:
+            - Path=/deliveries/** 
+        - id: patient
+          uri: http://localhost:8085
+          predicates:
+            - Path=/patients/** 
+        - id: coviddashboard
+          uri: http://localhost:8086
+          predicates:
+            - Path= 
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins:
+              - "*"
+            allowedMethods:
+              - "*"
+            allowedHeaders:
+              - "*"
+            allowCredentials: true
+
+
+---
+
+spring:
+  profiles: docker
+  cloud:
+    gateway:
+      routes:
+        - id: reservation
+          uri: http://reservation:8080
+          predicates:
+            - Path=/reservations/** 
+        - id: inspection
+          uri: http://inspection:8080
+          predicates:
+            - Path=/kits/**/inspections/** 
+        - id: diagnosis
+          uri: http://diagnosis:8080
+          predicates:
+            - Path=/diagnoses/** 
+        - id: delivery
+          uri: http://delivery:8080
+          predicates:
+            - Path=/deliveries/** 
+        - id: patient
+          uri: http://patient:8080
+          predicates:
+            - Path=/patients/** 
+        - id: coviddashboard
+          uri: http://coviddashboard:8080
+          predicates:
+            - Path= 
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins:
+              - "*"
+            allowedMethods:
+              - "*"
+            allowedHeaders:
+              - "*"
+            allowCredentials: true
+
+server:
+  port: 8080
