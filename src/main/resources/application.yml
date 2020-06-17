@@ -15,7 +15,7 @@ spring:
         - id: inspection
           uri: http://localhost:8082
           predicates:
-            - Path=/kits/**/inspections/** 
+            - Path=/kits/**, /inspections/**
         - id: diagnosis
           uri: http://localhost:8083
           predicates:
@@ -31,7 +31,7 @@ spring:
         - id: coviddashboard
           uri: http://localhost:8086
           predicates:
-            - Path= 
+            - Path=/coviddashboards/**
       globalcors:
         corsConfigurations:
           '[/**]':
@@ -58,7 +58,7 @@ spring:
         - id: inspection
           uri: http://inspection:8080
           predicates:
-            - Path=/kits/**/inspections/** 
+            - Path=/kits/**, /inspections/**
         - id: diagnosis
           uri: http://diagnosis:8080
           predicates:
@@ -74,7 +74,7 @@ spring:
         - id: coviddashboard
           uri: http://coviddashboard:8080
           predicates:
-            - Path= 
+            - Path=/coviddashboards/**
       globalcors:
         corsConfigurations:
           '[/**]':
