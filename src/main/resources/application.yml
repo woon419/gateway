@@ -11,7 +11,11 @@ spring:
         - id: reservation
           uri: http://localhost:8081
           predicates:
-            - Path=/reservations/** 
+            - Path=/reservations/**
+        - id: gvmt
+          uri: http://localhost:8087
+          predicates:
+            - Path=/gvmts/**
         - id: inspection
           uri: http://localhost:8082
           predicates:
@@ -54,7 +58,11 @@ spring:
         - id: reservation
           uri: http://reservation:8080
           predicates:
-            - Path=/reservations/** 
+            - Path=/reservations/**
+        - id: gvmt
+          uri: http://gvmt:8080
+          predicates:
+            - Path=/gvmts/**
         - id: inspection
           uri: http://inspection:8080
           predicates:
